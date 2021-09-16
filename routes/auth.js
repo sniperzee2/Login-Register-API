@@ -32,7 +32,7 @@ const authController = require('../controller/authController')
  * @swagger
  * /register:
  *   post:
- *     summary: Login
+ *     summary: Register a user 
  *     requestBody:
  *       required: true
  *       content:
@@ -50,7 +50,7 @@ router.post('/register', authController.register)
  * @swagger
  * /login:
  *   post:
- *     summary: Register a user
+ *     summary: Login
  *     requestBody:
  *       required: true
  *       content:

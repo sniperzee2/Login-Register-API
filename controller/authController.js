@@ -3,20 +3,27 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 const register = (req, res) => {
-  bcrypt.hash(req.body.password, 10, function (err, hashedPassword) {
-    if (err) {
-      res.status(400).json({
+  User.findOne({ email: req.body.email }).exec((err, user) => {
+    if(err){
+      return res.status(400).json({
         status: "error",
-        message: "Failed",
+        message: "Some Error",
       });
-    }
-    var check = User.findOne({ email: req.body.email });
-    if (check) {
-      res.status(400).json({
-        status: "error",
-        message: "Email already exists",
-      });
-    } else {
+    }else{
+      if(user){
+        return res.status(400).json({
+          status: "error",
+          message: "Email already exists",
+        });
+      }
+      else{     
+      bcrypt.hash(req.body.password, 10, function (err, hashedPassword) {
+        if (err) {
+          res.status(400).json({
+            status: "error",
+            message: "Failed",
+          });
+        }
       let user = new User({
         email: req.body.email,
         password: hashedPassword,
@@ -35,9 +42,12 @@ const register = (req, res) => {
             message: "Failed to register",
           });
         });
+      })
+      }
     }
-  });
-};
+})
+}
+
 
 const login = (req, res) => {
   const email = req.body.email;
