@@ -3,8 +3,6 @@
 
 For registration and login through nodejs
 
-<b>Note: Before starting the server enter the MongoDB url and JWT Secret in the example.env file</b>
-
 
 
 ## Run Locally
