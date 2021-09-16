@@ -3,7 +3,7 @@
 
 For registration and login through nodejs
 
-
+<b>Note: Before starting the server enter the MongoDB url and JWT Secret in the example.env file</b>
 
 
 
@@ -26,7 +26,6 @@ Install dependencies
 ```bash
   npm install
 ```
-Note: Before starting the server enter the MongoDB url and JWT Secret in the example.env file
 
 Start the server
 
