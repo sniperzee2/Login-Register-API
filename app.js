@@ -7,7 +7,7 @@ const swaggerJsDoc = require("swagger-jsdoc")
 const connectDB = require("./config/db");
 const auth = require('./routes/auth');
 
-dotenv.config({ path: "./config/config.env" });
+dotenv.config({ path: "./config/example.env" });
 connectDB();
 
 const options = {
